@@ -16,11 +16,8 @@ export default function App() {
   }
 
   const verificarForca = (senha) => {
-    if(/[A-Z]/.test(senha)){
-      setForcaSenha("Senha Forte");
-    } else {
-      setForcaSenha("Coloque pelo menos uma letra maiuscula");
-    }
+    /[A-Z]/.test(senha) ? setForcaSenha("senha forte") : setForcaSenha("coloque pelo menos uma letra maiuscula");
+
   };
 
 
@@ -32,7 +29,7 @@ export default function App() {
       </div>
 
       <section className="flex justify-center items-cente space-x-10  ">
-        <form className="w-80 h-80 bg-white border border-gray-500 shadow-xl rounded-lg flex justify-center flex-col items-center my-60">
+        <form className="w-80 h-80 bg-white border border-gray-500 shadow-xl rounded-lg flex justify-center flex-col items-center lg:my-20 my-60">
         <FaLock 
         size={48}
         />
@@ -45,7 +42,7 @@ export default function App() {
               verificarForca(e.target.value);
             }}
           />
-          <p className={`${forcaSenha === "Senha Forte" ? "text-green-500" : "text-red-500"}`}>
+          <p className={`${forcaSenha === "senha forte" ? "text-green-500" : "text-red-500"}`}>
             {forcaSenha && <p>{forcaSenha}</p>}
           </p>
           <button className="border border-gray-500 p-2 rounded-2xl bg-blue-500 text-white" onClick={adicionarSenha}>

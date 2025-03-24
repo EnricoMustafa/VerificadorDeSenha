@@ -5,14 +5,27 @@ export default function App() {
 
   const [senha, setSenha] = useState("");
   const [listaSenhas, setListasSenhas] = useState([]);
+  const [forcaSenha, setForcaSenha] = useState("");
 
-  const adicionarSenha = (e) =>{
+  const adicionarSenha = (e) => {
     e.preventDefault();
     if(senha.trim() !== ""){
       setListasSenhas([...listaSenhas, senha]);
       setSenha("");
     }
   }
+
+  const verificarForca = (senha) => {
+    if(/[A-Z]/.test(senha)){
+      setForcaSenha("Senha Forte");
+      <h1>Senha forte</h1>
+    } else {
+      setForcaSenha("Senha Fraca");
+      <h1>Senha fraca</h1>
+      console.log("Senha fraca")
+    }
+  };
+
 
  
   return (
@@ -30,7 +43,11 @@ export default function App() {
             className="border border-gray-500 shadow-lg rounded-lg p-2 my-5"
             type="password"
             placeholder="Digite uma senha"
-            onChange={(e) => setSenha(e.target.value)}
+            onChange={(e) => {
+              setSenha(e.target.value);
+              verificarForca(e.target.value);
+
+            }}
           />
           <button className="border border-gray-500 p-2 rounded-2xl bg-blue-500 text-white" onClick={adicionarSenha}>
             Verificar

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Noto Sans", sans-serif;
+  background: linear-gradient(to right, #60a5fa, #34d399);
+  min-height: 100vh;
+}

@@ -18,11 +18,8 @@ export default function App() {
   const verificarForca = (senha) => {
     if(/[A-Z]/.test(senha)){
       setForcaSenha("Senha Forte");
-      <h1>Senha forte</h1>
     } else {
-      setForcaSenha("Senha Fraca");
-      <h1>Senha fraca</h1>
-      console.log("Senha fraca")
+      setForcaSenha("Coloque pelo menos uma letra maiuscula");
     }
   };
 
@@ -46,9 +43,11 @@ export default function App() {
             onChange={(e) => {
               setSenha(e.target.value);
               verificarForca(e.target.value);
-
             }}
           />
+          <p className={`${forcaSenha === "Senha Forte" ? "text-green-500" : "text-red-500"}`}>
+            {forcaSenha && <p>{forcaSenha}</p>}
+          </p>
           <button className="border border-gray-500 p-2 rounded-2xl bg-blue-500 text-white" onClick={adicionarSenha}>
             Verificar
           </button>

@@ -64,7 +64,7 @@ export default function App() {
           <p
             className={`${
               forcaSenha === "Senha Forte" ? "text-green-500" : 
-              forcaSenha === "Senha media" ? "text-yellow-400" : 
+              forcaSenha === "Senha media" ? "text-yellow-500" : 
               forcaSenha === "Senha fraca" ? "text-orange-400" : "text-red-500"
             }`}
           >

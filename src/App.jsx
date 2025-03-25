@@ -15,11 +15,20 @@ export default function App() {
     }
   };
 
-  const verificarForca = (senha) => {
-    /[A-Z]/.test(senha)
-      ? setForcaSenha("senha forte")
-      : setForcaSenha("coloque pelo menos uma letra maiuscula");
-  };
+  const verificarForçaSenha = (senha) => {
+    let forca = 0;
+
+    /[A-Z]/.test(senha) ? forca++ : null;
+    /[a-z]/.test(senha) ? forca++ : null;
+    /[0-9]/.test(senha) ? forca++ : null;
+    /[\W_]/.test(senha) ? forca++ : null;
+
+    forca <= 1 ? setForcaSenha("Senha muito fraca") : null;
+    forca === 2 ? setForcaSenha("Senha fraca") : null;
+    forca === 3 ? setForcaSenha("Senha media") : null;
+    forca === 4 ? setForcaSenha("Senha Forte") : null;
+    
+  }
 
   return (
     <Fragment>
@@ -27,7 +36,7 @@ export default function App() {
         <h1 className="text-3xl font-bold font-mono">Verificador de senha</h1>
       </div>
 
-      <section className="flex justify-center items-cente space-x-10  ">
+      <section className="flex justify-center items-center space-x-10  ">
         <form className="w-80 h-80 bg-white border border-gray-500 shadow-xl rounded-lg flex justify-center flex-col items-center lg:my-20 my-60">
           <FaLock size={48} />
           <div className="relative">
@@ -37,8 +46,9 @@ export default function App() {
               placeholder="Digite uma senha"
               onChange={(e) => {
                 setSenha(e.target.value);
-                verificarForca(e.target.value);
+                verificarForçaSenha(e.target.value);
               }}
+              onBlur={() => setForcaSenha("")}
             />
             <button
               className="absolute flex top-1/2 right-3 transform -translate-y-1/2 text-gray-600"
@@ -53,10 +63,12 @@ export default function App() {
           </div>
           <p
             className={`${
-              forcaSenha === "senha forte" ? "text-green-500" : "text-red-500"
+              forcaSenha === "Senha Forte" ? "text-green-500" : 
+              forcaSenha === "Senha media" ? "text-yellow-400" : 
+              forcaSenha === "Senha fraca" ? "text-orange-400" : "text-red-500"
             }`}
           >
-            {forcaSenha && <p>{forcaSenha}</p>}
+            <p>{forcaSenha}</p>
           </p>
           <button
             className="border border-gray-500 p-2 rounded-2xl bg-blue-500 text-white"

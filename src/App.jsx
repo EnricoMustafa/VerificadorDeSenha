@@ -131,7 +131,7 @@ export default function App() {
         </button>
       </div>
 
-      <div className="flex justify-end px-10">
+      <div className="flex justify-end px-10 fixed bottom-4 right-4 p-3">
         <a
           className="transition-all hover:bg-blue-400 hover:text-white border-gray-500 shadow-lg bg-white font-bold p-4 rounded-3xl text-black flex items-center"
           href="https://github.com/EnricoMustafa/VerificadorDeSenha.git"

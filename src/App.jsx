@@ -43,103 +43,113 @@ export default function App() {
   };
 
   return (
-    <>
-      <div className="flex justify-center bg-white h-14 items-center">
-        <h1 className="text-3xl font-bold font-mono">Verificador de senha</h1>
-      </div>
+<>
+  {/* Cabeçalho */}
+  <div className="flex justify-center bg-white h-14 items-center">
+    <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center">
+      Verificador de senha
+    </h1>
+  </div>
 
-      <section className="flex justify-center items-center space-x-10 ">
-        <form className="w-80 h-80 bg-white border border-gray-500 shadow-xl rounded-lg flex justify-center flex-col items-center lg:my-20 my-60">
-          <FaLock size={48} />
-          <div className="relative">
-            <input
-              className="border border-gray-500 shadow-lg rounded-lg p-2 my-5"
-              type={mostrarSenha ? "text" : "password"}
-              placeholder="Digite uma senha"
-              onChange={(e) => {
-                setSenha(e.target.value);
-                verificarForçaSenha(e.target.value);
-              }}
-              onBlur={() => setForcaSenha("")}
-            />
-            <button
-              className="absolute flex top-1/2 right-3 transform -translate-y-1/2 text-gray-600"
-              type="button"
-              onClick={() => {
-                setmostrarSenha(!mostrarSenha);
-              }}
-            >
-              {mostrarSenha ? <FaEye size={20} /> : <FaEyeSlash size={20} />}
-            </button>
-          </div>
-          <p
-            className={`${
-              forcaSenha === "Senha Forte"
-                ? "text-green-500"
-                : forcaSenha === "Senha media"
-                ? "text-yellow-500"
-                : forcaSenha === "Senha fraca"
-                ? "text-orange-400"
-                : "text-red-500"
-            }`}
-          >
-            {forcaSenha}
-          </p>
+  {/* Seção principal */}
+  <section className="flex flex-wrap xl:flex-row sm:flex-col items-center justify-center gap-10 p-5">
+
+    {/* Formulário de verificação */}
+    <div className="flex justify-center items-center xl:justify-start w-full xl:w-auto">
+      <form className="w-80 h-80 bg-white border border-gray-500 shadow-xl rounded-lg flex justify-center flex-col items-center xl:my-10 xl:mx-5">
+        <FaLock size={48} />
+        <div className="relative w-full px-5">
+          <input
+            className="border border-gray-500 shadow-lg rounded-lg p-2 my-5 w-full"
+            type={mostrarSenha ? "text" : "password"}
+            placeholder="Digite uma senha"
+            onChange={(e) => {
+              setSenha(e.target.value);
+              verificarForçaSenha(e.target.value);
+            }}
+            onBlur={() => setForcaSenha("")}
+          />
           <button
-            className="px-7 py-3 transition-all  border-gray-500 shadow-lg bg-blue-400 text-white font-bold p-4 rounded-3xl hover:bg-white hover:border-gray-200 border  hover:text-black flex"
-            onClick={adicionarSenha}
+            className="absolute top-1/2 right-8 -translate-y-1/2 text-gray-600"
+            type="button"
+            onClick={() => setmostrarSenha(!mostrarSenha)}
           >
-            Verificar
+            {mostrarSenha ? <FaEye size={20} /> : <FaEyeSlash size={20} />}
           </button>
-        </form>
-        <div className="w-96 h-96 flex-col m-auto bg-white border border-gray-500 shadow-xl rounded-lg  ">
-          <h1 className="text-3xl font-bold font-mono text-center border-b-2 border-black">
-            Senhas
-          </h1>
-          <ul className="flex-col text-red-400 text-center my-5">
-            {listaSenhas.map((item, index) => (
-              <li key={index} className="font-bold text-black">
-                {item}
-              </li>
-            ))}
-          </ul>
         </div>
-      </section>
-      <div className="w-96 h-80 m-auto bg-white border border-gray-500 shadow-xl rounded-lg">
-        <h1 className="text-3xl font-bold font-mono text-center border-b-2 border-black">
-          Gerador de senhas
-        </h1>
-        <h2 className="font-bold text-center my-2">
-          Digite a quantidade de caracteres desejadas
-        </h2>
-        <input
-          min={0}
-          value={quantidadeGerar}
-          type="number"
-          onChange={(e) => {
-            setQuantidadeGerar(Number(e.target.value));
-          }}
-          placeholder="Quantidade de caracteres"
-          className="border border-gray-500 shadow-lg rounded-lg p-2 my-5 flex m-auto"
-        />
-        <p className="text-center font-bold my-8">{gerarSenha}</p>
+        <p
+          className={`${
+            forcaSenha === "Senha Forte"
+              ? "text-green-500"
+              : forcaSenha === "Senha media"
+              ? "text-yellow-500"
+              : forcaSenha === "Senha fraca"
+              ? "text-orange-400"
+              : "text-red-500"
+          }`}
+        >
+          {forcaSenha}
+        </p>
         <button
-          className=" px-7 py-3 transition-all  border-gray-500 shadow-lg bg-blue-400 text-white font-bold p-4 rounded-3xl m-auto hover:bg-white hover:border-gray-200 border  hover:text-black flex"
-          onClick={() => geradorSenha(quantidadeGerar)}
+          className="px-7 py-3 transition-all border-gray-500 shadow-lg bg-blue-400 text-white font-bold rounded-3xl hover:bg-white hover:border-gray-200 border hover:text-black flex"
+          onClick={adicionarSenha}
         >
-          Gerar Senha
+          Salvar
         </button>
-      </div>
+      </form>
+    </div>
 
-      <div className="flex justify-end px-10 fixed bottom-4 right-4 p-3">
-        <a
-          className="transition-all hover:bg-blue-400 hover:text-white border-gray-500 shadow-lg bg-white font-bold p-4 rounded-3xl text-black flex items-center"
-          href="https://github.com/EnricoMustafa/VerificadorDeSenha.git"
-        >
-          Ir para GitHub
-          <GrGithub className="mx-2" size={25} />
-        </a>
-      </div>
-    </>
+    {/* Lista de senhas */}
+    <div className="w-96 h-auto sm:h-96 flex-col bg-white border border-gray-500 shadow-xl rounded-lg p-5">
+      <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center border-b-2 border-black">
+        Senhas
+      </h1>
+      <ul className="text-center my-5">
+        {listaSenhas.map((item, index) => (
+          <li key={index} className="font-bold text-black">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Gerador de senha */}
+    <div className="w-full sm:w-96 h-auto bg-white border border-gray-500 shadow-xl rounded-lg p-5">
+      <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center border-b-2 border-black">
+        Gerador de senhas
+      </h1>
+      <h2 className="font-bold text-center my-2 text-lg">
+        Digite a quantidade de caracteres desejada
+      </h2>
+      <input
+        min={0}
+        value={quantidadeGerar}
+        type="number"
+        onChange={(e) => setQuantidadeGerar(Number(e.target.value))}
+        placeholder="Quantidade de caracteres"
+        className="border border-gray-500 shadow-lg rounded-lg p-2 my-5 flex m-auto w-3/4 sm:w-2/3"
+      />
+      <p className="text-center font-bold my-8 text-lg">{gerarSenha}</p>
+      <button
+        className="px-7 py-3 transition-all border-gray-500 shadow-lg bg-blue-400 text-white font-bold rounded-3xl m-auto hover:bg-white hover:border-gray-200 border hover:text-black flex"
+        onClick={() => geradorSenha(quantidadeGerar)}
+      >
+        Gerar Senha
+      </button>
+    </div>
+  </section>
+
+  {/* Botão GitHub */}
+  <div className="fixed bottom-4 right-4 p-3 sm:p-5">
+    <a
+      className="transition-all hover:bg-blue-400 hover:text-white border-gray-500 shadow-lg bg-white font-bold p-4 rounded-3xl text-black flex items-center"
+      href="https://github.com/EnricoMustafa/VerificadorDeSenha.git"
+    >
+      Ir para GitHub
+      <GrGithub className="mx-2" size={25} />
+    </a>
+  </div>
+</>
+
   );
 }

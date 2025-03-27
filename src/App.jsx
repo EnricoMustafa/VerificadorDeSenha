@@ -113,6 +113,7 @@ export default function App() {
           Digite a quantidade de caracteres desejadas
         </h2>
         <input
+          min={0}
           value={quantidadeGerar}
           type="number"
           onChange={(e) => {

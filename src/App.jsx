@@ -6,6 +6,8 @@ export default function App() {
   const [listaSenhas, setListasSenhas] = useState([]);
   const [forcaSenha, setForcaSenha] = useState("");
   const [mostrarSenha, setmostrarSenha] = useState(false);
+  const [gerarSenha, setGerarSenha] = useState("");
+  const [quantidadeGerar, setQuantidadeGerar] = useState(0);
 
   const adicionarSenha = (e) => {
     e.preventDefault();
@@ -27,11 +29,19 @@ export default function App() {
     forca === 2 ? setForcaSenha("Senha fraca") : null;
     forca === 3 ? setForcaSenha("Senha media") : null;
     forca === 4 ? setForcaSenha("Senha Forte") : null;
-    
-  }
+  };
+
+  const geradorSenha = (quantidadeCarac) => {
+    let novaSenha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*_,.?";
+    const letrasGeradas = Array.from({ length: quantidadeCarac }, () =>
+      novaSenha.charAt(Math.floor(Math.random() * novaSenha.length))
+    ).join("");
+
+    setGerarSenha(letrasGeradas);
+  };
 
   return (
-    <Fragment>
+    <>
       <div className="flex justify-center bg-white h-14 items-center">
         <h1 className="text-3xl font-bold font-mono">Verificador de senha</h1>
       </div>
@@ -55,7 +65,7 @@ export default function App() {
               type="button"
               onClick={() => {
                 setmostrarSenha(!mostrarSenha);
-                verSenha(senha);
+                
               }}
             >
               {mostrarSenha ? <FaEye size={20}/> : <FaEyeSlash size={20} />}
@@ -64,11 +74,11 @@ export default function App() {
           <p
             className={`${
               forcaSenha === "Senha Forte" ? "text-green-500" : 
-              forcaSenha === "Senha media" ? "text-yellow-400" : 
+              forcaSenha === "Senha media" ? "text-yellow-500" : 
               forcaSenha === "Senha fraca" ? "text-orange-400" : "text-red-500"
             }`}
-          >
-            <p>{forcaSenha}</p>
+            >
+          {forcaSenha}
           </p>
           <button
             className="border border-gray-500 p-2 rounded-2xl bg-blue-500 text-white"
@@ -90,6 +100,19 @@ export default function App() {
           </ul>
         </div>
       </section>
-    </Fragment>
+        <div className="w-96 h-80 m-auto bg-white border border-gray-500 shadow-xl rounded-lg">
+          <h1 className="text-3xl font-bold font-mono text-center border-b-2 border-black">Gerador de senhas</h1>
+          <h2 className="font-bold text-center my-2">Digite a quantidade de caracteres desejadas</h2>
+          <input 
+          value={quantidadeGerar}
+          type="number"
+          onChange={(e) => {setQuantidadeGerar(Number(e.target.value))}} 
+          placeholder="Quantidade de caracteres"  
+          className="border border-gray-500 shadow-lg rounded-lg p-2 my-5 flex m-auto"/>
+          <p className="text-center font-bold my-8">{gerarSenha}</p>
+          <button className="border border-gray-500 p-2 rounded-2xl bg-blue-500 text-white m-auto flex my-10" 
+          onClick={() => geradorSenha(quantidadeGerar)}>Gerar</button>
+        </div>
+    </>
   );
 }

@@ -100,7 +100,7 @@ export default function App() {
     </div>
 
     {/* Lista de senhas */}
-    <div className="w-96 h-auto sm:h-96 flex-col bg-white border border-gray-500 shadow-xl rounded-lg p-5">
+    <div className="w-96 h-80 overflow-y-auto sm:h-96 flex-col bg-white border border-gray-500 shadow-xl rounded-lg p-5">
       <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center border-b-2 border-black">
         Senhas
       </h1>
@@ -139,7 +139,6 @@ export default function App() {
     </div>
   </section>
 
-  {/* Botão GitHub */}
   <div className="fixed bottom-4 right-4 p-3 sm:p-5">
     <a
       className="transition-all hover:bg-blue-400 hover:text-white border-gray-500 shadow-lg bg-white font-bold p-4 rounded-3xl text-black flex items-center"

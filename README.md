@@ -1,12 +1,35 @@
-# React + Vite
+# 🔑 Verificador de Senha
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Descrição breve:**
+Aplicação web que avalia a força de senhas e sugere alternativas mais seguras.
 
-Currently, two official plugins are available:
+## 📖 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto permite aos usuários verificar a robustez de suas senhas atuais e receber sugestões de senhas mais fortes, promovendo melhores práticas de segurança digital.
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Tailwind
+
+## 🔧 Instalação e Uso
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/EnricoMustafa/VerificadorDeSenha.git
+   ```
+
+2. Acesse a pasta do projeto:
+   ```bash
+   cd VerificadorDeSenha
+   ```
+
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+4. Execute o projeto:
+   ```bash
+   npm run dev
+   ```

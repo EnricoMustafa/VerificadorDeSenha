@@ -33,6 +33,3 @@ Este projeto permite aos usuários verificar a robustez de suas senhas atuais e 
    ```bash
    npm run dev
    ```
-
-5. Abra o navegador e acesse `http://localhost:3000` para usar a aplicação.
-

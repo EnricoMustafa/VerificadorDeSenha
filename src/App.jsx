@@ -44,17 +44,14 @@ export default function App() {
 
   return (
 <>
-  {/* Cabeçalho */}
   <div className="flex justify-center bg-white h-14 items-center">
     <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center">
       Verificador de senha
     </h1>
   </div>
 
-  {/* Seção principal */}
   <section className="flex flex-wrap xl:flex-row sm:flex-col items-center justify-center gap-10 p-5">
 
-    {/* Formulário de verificação */}
     <div className="flex justify-center items-center xl:justify-start w-full xl:w-auto">
       <form className="w-80 h-80 bg-white border border-gray-500 shadow-xl rounded-lg flex justify-center flex-col items-center xl:my-10 xl:mx-5">
         <FaLock size={48} />
@@ -99,7 +96,6 @@ export default function App() {
       </form>
     </div>
 
-    {/* Lista de senhas */}
     <div className="w-96 h-80 overflow-y-auto sm:h-96 flex-col bg-white border border-gray-500 shadow-xl rounded-lg p-5">
       <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center border-b-2 border-black">
         Senhas
@@ -113,7 +109,6 @@ export default function App() {
       </ul>
     </div>
 
-    {/* Gerador de senha */}
     <div className="w-full sm:w-96 h-auto bg-white border border-gray-500 shadow-xl rounded-lg p-5">
       <h1 className="text-2xl sm:text-3xl font-bold font-mono text-center border-b-2 border-black">
         Gerador de senhas
